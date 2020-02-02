@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container">
+  <div id="app">
       <ApodCards :dataPhoto="dataPhoto" class="align-self-center" />
   </div>
 </template>
@@ -40,7 +40,7 @@
             getWeekDays: function() {
                 let daysArray = [];
                 let date = moment().isoWeek(1).startOf('week');
-                for (let d = 0; d < 7; d++) {
+                for (let d = 0; d < 9; d++) {
                     daysArray.push(date.format('YYYY-MM-DD'));
                     date.add(1, 'day');
                 }
@@ -61,10 +61,9 @@
         flex-direction: row;
         justify-content: center;
     }
-    
-    .row {
+    /* .row {
         height: 100vh;
-    }
+    } */
     
     [v-cloak] {
         display: none;
