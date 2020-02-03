@@ -1,7 +1,10 @@
 <template>
-  <div id="app">
-      <ApodCards :dataPhoto="dataPhoto" class="align-self-center" />
-  </div>
+    <div id="app">
+        <ApodCards :dataPhoto="dataPhoto" class="align-self-center" />
+        <div class="text-center py-3">
+            <button class="btn btn-dark btn-show-more" @click="getPhotos">Show More...</button>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -16,35 +19,39 @@
         },
         data() {
             return {
-                dataPhoto: []
+                dataPhoto: [],
+                startDate: moment()
             }
         },
-        created: function() {
-            let daysArray = this.getWeekDays();
-            for (let d = 0; d < daysArray.length; d++) {
-                this.fetchApod(daysArray[d]);
-            }
+        created: function () {
+            this.getPhotos();
         },
         methods: {
-            fetchApod: function(date) {
-                if (!date) {
-                    date = moment().format('YYYY-MM-DD')
-                }
+            fetchApod: function (date) {
                 let urlApi = 'https://api.nasa.gov/planetary/apod?api_key=' + process.env.VUE_APP_NASA_API_KEY + '&date=' + date;
 
                 axios.get(urlApi)
                     .then((res) => {
+                        res.data.date = moment(res.data.date).format('LLLL');
+                        res.data.url = res.data.media_type === 'video' ? 'http://i3.ytimg.com/vi/' + res.data.url.toString().split('embed/')[1].split('?rel')[0] + '/hqdefault.jpg' : res.data.url;
                         this.dataPhoto.push(res.data);
                     });
             },
-            getWeekDays: function() {
+            getWeekDays: function () {
                 let daysArray = [];
-                let date = moment().isoWeek(1).startOf('week');
+                let date = this.startDate;
                 for (let d = 0; d < 9; d++) {
                     daysArray.push(date.format('YYYY-MM-DD'));
-                    date.add(1, 'day');
+                    date.subtract(1, 'day');
                 }
+                date.subtract(1, 'day');
                 return daysArray;
+            },
+            getPhotos: function () {
+                let daysArray = this.getWeekDays();
+                for (let d = 0; d < daysArray.length; d++) {
+                    this.fetchApod(daysArray[d]);
+                }
             }
         }
     }
@@ -54,17 +61,14 @@
     body {
         background-color: rgb(40, 40, 40);
     }
-    
+
     .container {
         display: flex;
         align-items: center;
         flex-direction: row;
         justify-content: center;
     }
-    /* .row {
-        height: 100vh;
-    } */
-    
+
     [v-cloak] {
         display: none;
     }
