@@ -1,12 +1,9 @@
 # nasa-apod-vue
 Vue.JS application that shows astronomy pictures from NASA API
 
-# Screenshots
-![Nasa Apod Vue Desktop Demo](desktop-demo-app.gif)
+<img src="desktop-demo-app.gif" alt="Nasa Apod Vue Desktop Demo" width="600" height="370"/> <img src="mobile-demo-app.gif" alt="Nasa Apod Vue Mobile Demo" width="204" height="370" />
 
-![Nasa Apod Vue Mobile Demo](mobile-demo-app.gif)
-
-# Created with
+## Created with
 1. Vue.JS
 2. Bootstrap
 3. NASA Open APIs 
