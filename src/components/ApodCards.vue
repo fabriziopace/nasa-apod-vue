@@ -100,7 +100,8 @@
     }
 
     #astronomy-modal>.modal-dialog>.modal-content {
-        border-radius: 0;
+        border-radius: 0;        
+        background-color: transparent;
     }
 
     #astronomy-modal>.modal-dialog>.modal-content>.modal-body {
