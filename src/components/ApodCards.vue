@@ -62,6 +62,7 @@
             height: 25vw;
         }
     }
+
     @media (min-width: 992px) {
         .astronomy-card>img {
             height: 18vw;
@@ -77,5 +78,33 @@
         .carousel-item>.img {
             height: 350px;
         }
+    }
+
+    #astronomy-modal {
+        text-align: center;
+        padding: 0 !important;
+    }
+
+    #astronomy-modal:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -4px;
+    }
+
+    #astronomy-modal>.modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    #astronomy-modal>.modal-dialog>.modal-content {
+        border-radius: 0;
+    }
+
+    #astronomy-modal>.modal-dialog>.modal-content>.modal-body {
+        padding: 0rem;
+        border-radius: 0;
     }
 </style>
