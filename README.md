@@ -9,7 +9,7 @@ Vue.JS application that shows astronomy pictures from NASA API
 3. NASA Open APIs 
 
 ## Demo
-https://nasa-apod-vue.herokuapp.com/
+-
 
 ## Installation
 1. `git clone https://github.com/fabriziopace/nasa-apod-vue.git`
